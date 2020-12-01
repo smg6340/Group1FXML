@@ -1,39 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Staff;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-/**
- * FXML Controller class
- *
- * @author ljp5342
- */
+
 public class SleepInfoController2 implements Initializable {
     
     @FXML
@@ -235,44 +218,14 @@ public class SleepInfoController2 implements Initializable {
         }
     }
     
-    
-    public List<Staff> readByNameAdvanced(String lastname) {
-        Query query = manager.createNamedQuery("Staff.findByNameAdvanced");
-
-        // setting query parameter
-        query.setParameter("lastname", lastname);
-
-        // execute query
-        List<Staff> allStaff = query.getResultList();
-        for (Staff staff : allStaff) {
-            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments());
-        }
-
-        return allStaff;
-    }
-    
-    
-    
     public void initData(Staff model) {
         selectedModel = model;
-        //staffIdLabel.setText(model.getId().toString());
-        //staffLastnameLabel.setText(model.getLastname());
-
-    //    try {
-            // path points to /resource/images/
-    //        String imagename = "/resource/images/" + model.getLastname() + ".png";
-    //        Image profile = new Image(getClass().getResourceAsStream(imagename));
-            //profileImage.setImage(profile);
-
-    //    } catch (Exception ex) {
-    //        System.out.println(ex.getMessage());
-    //    }
     }
+    
     EntityManager manager;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //backToMainButton.setDisable(true);
         manager = (EntityManager) Persistence.createEntityManagerFactory("Group1FXMLPU").createEntityManager();
     }    
 }

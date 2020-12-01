@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -116,41 +115,6 @@ public class mainViewController implements Initializable {
         
 
         System.out.println("taking you to next page");
-
-        
-        // ------ old code , the way the scanner used to work most of this has been moved to sleep 2 -------------
-        
-        
-        
-//        Scanner input = new Scanner(System.in);
-//        
-//        // read input from command line
-//        System.out.println("Enter ID:");
-//        int id = input.nextInt();
-//        
-//        System.out.println("Enter Course:");
-//        String course = input.next();
-//        
-//        System.out.println("Enter Last Name:");
-//        String lastname = input.next();
-//        
-//        System.out.println("Enter Assignments:");
-//        String assignments = input.next();
-//        
-//        
-//        // create a staff instance
-//        Staff staff = new Staff();
-//        
-//        // set properties
-//        staff.setId(id);
-//        staff.setCourse(course);
-//        staff.setLastname(lastname);
-//        staff.setAssignments(assignments);
-//        // save this staff to database by calling Create operation        
-//        create(staff);
-        
-        
-        
     }
 
     @FXML
@@ -174,23 +138,7 @@ public class mainViewController implements Initializable {
         Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(tableViewScene);
         stage.show();
-        //  ---------------------------------- This is the end of the block that will load the enter info window ----------------------------------
-        
-               
-        
-
-
-// ------ old code , the way the scanner used to work most of this has been moved to sleep 2 -------------
-        
-//        Scanner input = new Scanner(System.in);
-//        
-//         // read input from command line
-//        System.out.println("Enter ID:");
-//        int id = input.nextInt();
-//        
-//        Staff s = readById(id);
-//        System.out.println("we are deleting this staff member: "+ s.toString());
-//        delete(s);
+   
     }
     
     
@@ -215,39 +163,7 @@ public class mainViewController implements Initializable {
         Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(tableViewScene);
         stage.show();
-        //  ---------------------------------- This is the end of the block that will load the enter info window ----------------------------------
-    
-
-        
-        
-        
-        // ------ old code , the way the scanner used to work most of this has been moved to sleep 2 -------------
-        
-//        Scanner input = new Scanner(System.in);
-//        
-//        // read input from command line
-//      System.out.println("Enter ID:");
-//       int id = input.nextInt();
-//       
-//       System.out.println("Enter Course:");
-//       String course = input.next();
-//      ////  
-//       System.out.println("Enter Last Name:");
-//       String lastname = input.next();
-//        
-//        System.out.println("Enter Assignments:");
-//       String assignments = input.next();
-//       
-//        // create a staff instance
-//        Staff staff = new Staff();
-//       
-//        // set properties
-//       staff.setId(id);
-//       staff.setCourse(course);
-//       staff.setLastname(lastname);
-//       staff.setAssignments(assignments);
-//      //  save this staff to database by calling Create operation        
-//        update(staff);
+       
     }
         
 
@@ -330,29 +246,6 @@ public class mainViewController implements Initializable {
         stage.show();
     }
 
-
-    
-    public void create(Staff staff) {
-        try {
-            // begin transaction
-            manager.getTransaction().begin();
-            
-            // sanity check
-            if (staff.getId() != null) {
-                
-                // create student
-                manager.persist(staff);
-                
-                // end transaction
-                manager.getTransaction().commit();
-                
-                System.out.println(staff.toString() + " is created");
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
     public List<Staff> readByNameAdvanced(String lastname) {
         Query query = manager.createNamedQuery("Staff.findByNameAdvanced");
 
@@ -366,65 +259,7 @@ public class mainViewController implements Initializable {
         }
 
         return allStaff;
-    }
-    
-    public Staff readById(int id){
-        Query query = manager.createNamedQuery("Staff.findById");
-        
-        // setting query parameter
-        query.setParameter("id", id);
-        
-        // execute query
-        Staff staff = (Staff) query.getSingleResult();
-        if (staff != null) {
-            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments());
-        }
-        
-        return staff;
-    }
-    
-    public void update(Staff model) {
-        try {
-
-            Staff existingStaff = manager.find(Staff.class, model.getId());
-
-            if (existingStaff != null) {
-                // begin transaction
-                manager.getTransaction().begin();
-                
-                // update all atttributes
-                existingStaff.setCourse(model.getCourse());
-                existingStaff.setLastname(model.getLastname());
-                existingStaff.setAssignments(model.getAssignments());
-                // end transaction
-                manager.getTransaction().commit();
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
-    public void delete(Staff staff) {
-        try {
-            Staff existingStaff = manager.find(Staff.class, staff.getId());
-
-            // sanity check
-            if (existingStaff != null) {
-                
-                // begin transaction
-                manager.getTransaction().begin();
-                
-                //remove student
-                manager.remove(existingStaff);
-                
-                // end transaction
-                manager.getTransaction().commit();
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-    
+    }    
     EntityManager manager;
 
     @Override
