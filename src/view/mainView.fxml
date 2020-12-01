@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="534.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.mainViewController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="882.0" prefWidth="530.0">
+         <children>
+            <Label fx:id="searchLabel" layoutX="26.0" layoutY="391.0" text="Search Classes:">
+               <font>
+                  <Font name="Monospaced Regular" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchTextField" layoutX="207.0" layoutY="391.0" prefHeight="25.0" prefWidth="202.0" text="e.g. Math" />
+            <Button fx:id="searchAdvancedButton" layoutX="438.0" layoutY="389.0" mnemonicParsing="false" onAction="#searchAdvanced" text="SEARCH">
+               <font>
+                  <Font name="Monospaced Regular" size="15.0" />
+               </font>
+            </Button>
+            <TableView fx:id="staffTable" layoutX="26.0" layoutY="431.0" prefHeight="189.0" prefWidth="487.0">
+               <columns>
+                  <TableColumn fx:id="staffLastname" prefWidth="118.0" text="LASTNAME" />
+                  <TableColumn fx:id="staffId" prefWidth="84.0" text="ID" />
+                  <TableColumn fx:id="staffCourse" text="COURSE" />
+                  <TableColumn fx:id="staffAssignments" prefWidth="275.0" text="ASSIGNMENTS" />
+               </columns>
+            </TableView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#70aae0" height="119.0" layoutX="-7.0" layoutY="-10.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eb884b" height="60.0" layoutX="-7.0" layoutY="175.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#759dc3" height="53.0" layoutX="-8.0" layoutY="244.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3ea873" height="51.0" layoutX="-8.0" layoutY="308.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
+            <Button fx:id="sleepSuggestionsButton" layoutX="26.0" layoutY="830.0" mnemonicParsing="false" onAction="#sleepSuggestions" text="Personalized Sleep Suggestion">
+               <font>
+                  <Font name="Monospaced Regular" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="createButton" layoutX="143.0" layoutY="184.0" mnemonicParsing="false" onAction="#createEntry" prefHeight="42.0" prefWidth="255.0" text="New Assignment">
+               <font>
+                  <Font name="Monospaced Regular" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="showDetailsInPlaceButton" layoutX="169.0" layoutY="37.0" mnemonicParsing="false" onAction="#showDetailsInPlace" text="Detailed View">
+               <font>
+                  <Font name="Monospaced Regular" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="updateButton" layoutX="142.0" layoutY="248.0" mnemonicParsing="false" onAction="#updateEntry" text="Update Assignment">
+               <font>
+                  <Font name="Monospaced Regular" size="22.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteButton" layoutX="142.0" layoutY="312.0" mnemonicParsing="false" onAction="#deleteEntry" text="Delete Assignment">
+               <font>
+                  <Font name="Monospaced Regular" size="22.0" />
+               </font>
+            </Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="68.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="454.0" layoutY="54.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="45.0" layoutX="472.0" layoutY="36.0" stroke="TRANSPARENT" strokeType="INSIDE" width="8.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="55.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1fff" height="135.0" layoutX="23.0" layoutY="685.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
+            <Text fill="WHITE" layoutX="29.0" layoutY="719.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to go To Bed Today at 11PM to receive the maximum amount of rest" wrappingWidth="343.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="177.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TUESDAY">
+               <font>
+                  <Font name="Arial Black" size="35.0" />
+               </font>
+            </Text>
+            <Text layoutX="23.0" layoutY="674.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sleep Reminders">
+               <font>
+                  <Font name="Arial Black" size="35.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </items>
+</SplitPane>
