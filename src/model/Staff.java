@@ -23,6 +23,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Staff.findByNameAdvanced", query = "SELECT s FROM Staff s WHERE  LOWER(s.lastname) LIKE  CONCAT('%', LOWER(:lastname), '%')")})
 public class Staff implements Serializable {
 
+    @Column(name = "OFFICEHOURS")
+    private String officehours;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -97,6 +100,14 @@ public class Staff implements Serializable {
     @Override
     public String toString() {
         return "model.Staff[ id=" + id + " ]";
+    }
+
+    public String getOfficehours() {
+        return officehours;
+    }
+
+    public void setOfficehours(String officehours) {
+        this.officehours = officehours;
     }
     
 }

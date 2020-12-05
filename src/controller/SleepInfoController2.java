@@ -58,6 +58,9 @@ public class SleepInfoController2 implements Initializable {
 
     @FXML
     private TextField deleteIDField;
+    
+    @FXML
+    private TextField enterOfficeHoursField;
 
     @FXML
     void backToMain(ActionEvent event) {
@@ -91,7 +94,8 @@ public class SleepInfoController2 implements Initializable {
       String lastname = enterNameField.getText();
         
       String assignments = enterAssignmentsField.getText();
-        
+      
+      String officehours = enterOfficeHoursField.getText();
         
         // create a staff instance
         Staff staff = new Staff();
@@ -101,6 +105,7 @@ public class SleepInfoController2 implements Initializable {
         staff.setCourse(course);
         staff.setLastname(lastname);
         staff.setAssignments(assignments);
+        staff.setOfficehours(officehours);
         // save this staff to database by calling Create operation        
         create(staff);
         
@@ -127,6 +132,8 @@ public class SleepInfoController2 implements Initializable {
       String lastname = enterNameField.getText();
         
       String assignments = enterAssignmentsField.getText();
+      
+      String officehours = enterOfficeHoursField.getText();
        
         // create a staff instance
         Staff staff = new Staff();
@@ -136,6 +143,7 @@ public class SleepInfoController2 implements Initializable {
        staff.setCourse(course);
        staff.setLastname(lastname);
        staff.setAssignments(assignments);
+       staff.setOfficehours(officehours);
       //  save this staff to database by calling Create operation        
         update(staff);
     }
@@ -175,6 +183,7 @@ public class SleepInfoController2 implements Initializable {
                 existingStaff.setCourse(model.getCourse());
                 existingStaff.setLastname(model.getLastname());
                 existingStaff.setAssignments(model.getAssignments());
+                existingStaff.setOfficehours(model.getOfficehours());
                 // end transaction
                 manager.getTransaction().commit();
             }
@@ -191,7 +200,7 @@ public class SleepInfoController2 implements Initializable {
         // execute query
         Staff staff = (Staff) query.getSingleResult();
         if (staff != null) {
-            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments());
+            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments() + " " + staff.getOfficehours());
         }
         
         return staff;
