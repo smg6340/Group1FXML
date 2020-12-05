@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -8,31 +10,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="922.0" prefWidth="534.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SleepInfoController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91ffe1" height="86.0" layoutX="21.0" layoutY="255.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
-      <Text layoutX="40.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- It is recommended you get 8 or more hours of sleep tonight for your test tomorrow" wrappingWidth="432.13671875">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#91ffe1" height="86.0" layoutX="21.0" layoutY="277.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#75b0ff" height="119.0" layoutX="-6.0" layoutY="-11.0" stroke="BLACK" strokeType="INSIDE" width="541.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="27.0" layoutY="39.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="27.0" layoutY="67.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="455.0" layoutY="53.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="45.0" layoutX="473.0" layoutY="35.0" stroke="TRANSPARENT" strokeType="INSIDE" width="8.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="27.0" layoutY="54.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
-      <Button fx:id="backButton" layoutX="21.0" layoutY="852.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="38.0" prefWidth="120.0" text="Back" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3ff9c" height="104.0" layoutX="24.0" layoutY="364.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
-      <Text layoutX="40.0" layoutY="393.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You were up studying last night. If you haven't already stay away from caffeinated drinks at night" wrappingWidth="455.13671875">
+      <Button fx:id="backButton" layoutX="21.0" layoutY="827.0" mnemonicParsing="false" onAction="#backToMain" prefHeight="63.0" prefWidth="137.0" text="Back" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c3ff9c" height="104.0" layoutX="24.0" layoutY="388.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
+      <Text layoutX="40.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- You were up studying last night. If you haven't already stay away from caffeinated drinks at night" wrappingWidth="455.13671875">
          <font>
             <Font size="21.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff6cf" height="93.0" layoutX="24.0" layoutY="495.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
-      <Text layoutX="37.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Try to eliminate naps in the afternoon" wrappingWidth="461.13671875">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff6cf" height="93.0" layoutX="24.0" layoutY="519.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
       <Text layoutX="21.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Personal ">
          <font>
             <Font name="Arial Black" size="35.0" />
@@ -43,5 +30,20 @@
             <Font name="Arial Black" size="35.0" />
          </font>
       </Text>
+      <Text layoutX="40.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- It is recommended you get 8 or more hours of sleep tonight for your test tomorrow" wrappingWidth="432.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="34.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Try to eliminate naps in the afternoon" wrappingWidth="461.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="93.0" fitWidth="171.0" layoutY="2.0">
+         <image>
+            <Image url="@../../../../../Desktop/study.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

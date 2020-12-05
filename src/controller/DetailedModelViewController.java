@@ -42,6 +42,12 @@ public class DetailedModelViewController implements Initializable {
 
     @FXML
     private Label staffLastnameLabel;
+    
+    @FXML
+    private Label officeHoursLabel;
+
+    @FXML
+    private Label staffOfficeHoursLabel;
 
     @FXML
     void backToMain(ActionEvent event) {
@@ -68,6 +74,7 @@ public class DetailedModelViewController implements Initializable {
         selectedModel = model;
         staffIdLabel.setText(model.getId().toString());
         staffLastnameLabel.setText(model.getLastname());
+        staffOfficeHoursLabel.setText(model.getOfficehours());
 
         try {
             // path points to /resource/images/

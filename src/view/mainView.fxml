@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -43,12 +45,12 @@
                   <Font name="Monospaced Regular" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="createButton" layoutX="143.0" layoutY="184.0" mnemonicParsing="false" onAction="#createEntry" prefHeight="42.0" prefWidth="255.0" text="New Assignment">
+            <Button fx:id="createButton" layoutX="441.0" layoutY="29.0" mnemonicParsing="false" onAction="#createEntry" opacity="0.0" prefHeight="60.0" prefWidth="66.0" text="New Assignment">
                <font>
                   <Font name="Monospaced Regular" size="22.0" />
                </font>
             </Button>
-            <Button fx:id="showDetailsInPlaceButton" layoutX="169.0" layoutY="37.0" mnemonicParsing="false" onAction="#showDetailsInPlace" text="Detailed View">
+            <Button fx:id="showDetailsInPlaceButton" layoutX="142.0" layoutY="184.0" mnemonicParsing="false" onAction="#showDetailsInPlace" prefHeight="43.0" prefWidth="255.0" text="Office Hours">
                <font>
                   <Font name="Monospaced Regular" size="22.0" />
                </font>
@@ -63,13 +65,10 @@
                   <Font name="Monospaced Regular" size="22.0" />
                </font>
             </Button>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="68.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="454.0" layoutY="54.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="45.0" layoutX="472.0" layoutY="36.0" stroke="TRANSPARENT" strokeType="INSIDE" width="8.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="8.0" layoutX="26.0" layoutY="55.0" stroke="TRANSPARENT" strokeType="INSIDE" width="44.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1fff" height="135.0" layoutX="23.0" layoutY="685.0" stroke="BLACK" strokeType="INSIDE" width="487.0" />
-            <Text fill="WHITE" layoutX="29.0" layoutY="719.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to go To Bed Today at 11PM to receive the maximum amount of rest" wrappingWidth="343.0">
+            <Text fill="WHITE" layoutX="36.0" layoutY="720.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Try to go To Bed Today at 11PM to receive the maximum amount of rest" wrappingWidth="343.0">
                <font>
                   <Font size="20.0" />
                </font>
@@ -84,6 +83,11 @@
                   <Font name="Arial Black" size="35.0" />
                </font>
             </Text>
+            <ImageView fitHeight="97.0" fitWidth="187.0" layoutY="6.0">
+               <image>
+                  <Image url="@../../../../../Desktop/study.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </items>
