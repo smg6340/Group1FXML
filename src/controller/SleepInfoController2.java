@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -11,11 +12,12 @@ import model.Staff;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 public class SleepInfoController2 implements Initializable {
     
@@ -63,25 +65,25 @@ public class SleepInfoController2 implements Initializable {
     private TextField enterOfficeHoursField;
 
     @FXML
-    void backToMain(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        
-        //  option 2: get current stage -- from backbutton        
-        // Stage stage = (Stage)backButton.getScene().getWindow();
-        
-        if (previousScene != null) {
-            stage.setScene(previousScene);
-        }
+    void backToMain(ActionEvent event) throws IOException{
+//instead of going back to "previous scene", this reloads the mainView so the table has the most up-to-date information
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/mainView.fxml"));
+        // load the ui elements
+        Parent mainView = loader.load();
+        // load the scene
+        Scene tableViewScene = new Scene(mainView);
+        //access the detailedControlled and call a method
+        mainViewController mainController = loader.getController();
+        // pass current scene to return
+        Scene currentScene = ((Node) event.getSource()).getScene();
+        //This line gets the Stage information
+        Stage stage = (Stage) currentScene.getWindow();
+        stage.setScene(tableViewScene);
+        stage.show();
     }
     
     Staff selectedModel;
     Scene previousScene;
-    
-    public void setPreviousScene(Scene scene) {
-        previousScene = scene;
-        //backToMainButton.setDisable(false);
-
-    }
     
         // ----------------------------------- below this line is stuff needed to make add when the enter button is pressed --------------------------------
     @FXML
@@ -107,9 +109,7 @@ public class SleepInfoController2 implements Initializable {
         staff.setAssignments(assignments);
         staff.setOfficehours(officehours);
         // save this staff to database by calling Create operation        
-        create(staff);
-        
-       
+        create(staff);   
     }
     
     @FXML
@@ -119,6 +119,7 @@ public class SleepInfoController2 implements Initializable {
 
     @FXML
     void enterUpdate(ActionEvent event) {
+     
       int id = Integer.parseInt(enterIdField.getText());
         
       String course = enterCourseField.getText();
@@ -180,6 +181,7 @@ public class SleepInfoController2 implements Initializable {
                 existingStaff.setOfficehours(model.getOfficehours());
                 // end transaction
                 manager.getTransaction().commit();
+                System.out.println(existingStaff.toString() + " is updated");
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -188,6 +190,10 @@ public class SleepInfoController2 implements Initializable {
     
     public void initData(Staff model) {
         selectedModel = model;
+        enterCourseField.setText(model.getCourse());
+        enterNameField.setText(model.getLastname());
+        enterAssignmentsField.setText(model.getAssignments());
+        enterOfficeHoursField.setText(model.getOfficehours());
     }
     
     EntityManager manager;

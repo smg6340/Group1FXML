@@ -102,16 +102,13 @@ public class mainViewController implements Initializable {
         Scene tableViewScene = new Scene(sleepInfo2);
         //access the detailedControlled and call a method
         SleepInfoController2 sleepControlled2 = loader.getController();
-        sleepControlled2.initData(selectedStaff);
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        sleepControlled2.setPreviousScene(currentScene);
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(tableViewScene);
         stage.show();
         //  ---------------------------------- This is the end of the block that will load the enter info window ----------------------------------
-        
         
 
         System.out.println("taking you to next page");
@@ -125,6 +122,10 @@ public class mainViewController implements Initializable {
         Staff s = readById(id);
         System.out.println("we are deleting this staff member: "+ s.toString());
         delete(s);
+//updates table to reflect changes       
+       List<Staff> allStaff = readAll();
+       setTableData(allStaff);
+
     }
     
     
@@ -144,12 +145,11 @@ public class mainViewController implements Initializable {
         sleepControlled2.initData(selectedStaff);
         // pass current scene to return
         Scene currentScene = ((Node) event.getSource()).getScene();
-        sleepControlled2.setPreviousScene(currentScene);
         //This line gets the Stage information
         Stage stage = (Stage) currentScene.getWindow();
         stage.setScene(tableViewScene);
-        stage.show();
-       
+        stage.show();   
+        
     }
         
 
@@ -230,6 +230,17 @@ public class mainViewController implements Initializable {
 
         stage.setScene(tableViewScene);
         stage.show();
+    }
+    
+    public List<Staff> readAll(){
+        Query query = manager.createNamedQuery("Staff.findAll");
+        List<Staff> allStaff = query.getResultList();
+
+        for (Staff s : allStaff) {
+            System.out.println(s.getId() + " " + s.getLastname()+ " " + s.getCourse() + " " + s.getAssignments() + " " + s.getOfficehours());
+        }
+        
+        return allStaff;
     }
     
     public void delete(Staff staff) {
