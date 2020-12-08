@@ -114,12 +114,6 @@ public class SleepInfoController2 implements Initializable {
     
     @FXML
     void enterDelete(ActionEvent event) {
-        
-        int id = Integer.parseInt(deleteIDField.getText());
-        
-        Staff s = readById(id);
-        System.out.println("we are deleting this staff member: "+ s.toString());
-        delete(s);
 
     }
 
@@ -184,41 +178,6 @@ public class SleepInfoController2 implements Initializable {
                 existingStaff.setLastname(model.getLastname());
                 existingStaff.setAssignments(model.getAssignments());
                 existingStaff.setOfficehours(model.getOfficehours());
-                // end transaction
-                manager.getTransaction().commit();
-            }
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
-        public Staff readById(int id){
-        Query query = manager.createNamedQuery("Staff.findById");
-        
-        // setting query parameter
-        query.setParameter("id", id);
-        
-        // execute query
-        Staff staff = (Staff) query.getSingleResult();
-        if (staff != null) {
-            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments() + " " + staff.getOfficehours());
-        }
-        
-        return staff;
-    }
-        
-    public void delete(Staff staff) {
-        try {
-            Staff existingStaff = manager.find(Staff.class, staff.getId());
-
-            // sanity check
-            if (existingStaff != null) {
-                
-                // begin transaction
-                manager.getTransaction().begin();
-                
-                //remove student
-                manager.remove(existingStaff);
-                
                 // end transaction
                 manager.getTransaction().commit();
             }

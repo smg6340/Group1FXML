@@ -118,27 +118,13 @@ public class mainViewController implements Initializable {
     }
 
     @FXML
-    void deleteEntry(ActionEvent event) throws IOException {
+    void deleteEntry(ActionEvent event) {
         Staff selectedStaff = staffTable.getSelectionModel().getSelectedItem();
 
-        
-        //  ---------------------------------- This block will load the enter info window (also add the part that says throws excption above) ----------------------------------
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/sleepInfo2.fxml"));
-        // load the ui elements
-        Parent sleepInfo2 = loader.load();
-        // load the scene
-        Scene tableViewScene = new Scene(sleepInfo2);
-        //access the detailedControlled and call a method
-        SleepInfoController2 sleepControlled2 = loader.getController();
-        sleepControlled2.initData(selectedStaff);
-        // pass current scene to return
-        Scene currentScene = ((Node) event.getSource()).getScene();
-        sleepControlled2.setPreviousScene(currentScene);
-        //This line gets the Stage information
-        Stage stage = (Stage) currentScene.getWindow();
-        stage.setScene(tableViewScene);
-        stage.show();
-   
+        int id = selectedStaff.getId();
+        Staff s = readById(id);
+        System.out.println("we are deleting this staff member: "+ s.toString());
+        delete(s);
     }
     
     
@@ -245,7 +231,43 @@ public class mainViewController implements Initializable {
         stage.setScene(tableViewScene);
         stage.show();
     }
+    
+    public void delete(Staff staff) {
+        try {
+            Staff existingStaff = manager.find(Staff.class, staff.getId());
 
+            // sanity check
+            if (existingStaff != null) {
+                
+                // begin transaction
+                manager.getTransaction().begin();
+                
+                //remove student
+                manager.remove(existingStaff);
+                
+                // end transaction
+                manager.getTransaction().commit();
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+    public Staff readById(int id){
+        Query query = manager.createNamedQuery("Staff.findById");
+        
+        // setting query parameter
+        query.setParameter("id", id);
+        
+        // execute query
+        Staff staff = (Staff) query.getSingleResult();
+        if (staff != null) {
+            System.out.println(staff.getId() + " " + staff.getLastname()+ " " + staff.getCourse() + " " + staff.getAssignments() + " " + staff.getOfficehours());
+        }
+        
+        return staff;
+    }
+    
     public List<Staff> readByNameAdvanced(String lastname) {
         Query query = manager.createNamedQuery("Staff.findByNameAdvanced");
 
