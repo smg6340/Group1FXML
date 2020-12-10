@@ -123,7 +123,7 @@ public class SleepInfoController2 implements Initializable {
     @FXML
     void enterUpdate(ActionEvent event) {
      
-      int id = Integer.parseInt(enterIdField.getText());
+      int id = Integer.parseInt(textChange.getText());
         
       String course = enterCourseField.getText();
         
@@ -208,6 +208,7 @@ public class SleepInfoController2 implements Initializable {
         enterNameField.setText(model.getLastname());
         enterAssignmentsField.setText(model.getAssignments());
         enterOfficeHoursField.setText(model.getOfficehours());
+        textChange.setText(String.valueOf(model.getId()));
     }
     
     EntityManager manager;
